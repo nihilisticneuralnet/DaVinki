@@ -63,7 +63,6 @@ cd DaVinki
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the example
 python main.py
 ```
 
@@ -71,7 +70,7 @@ python main.py
 
 ### Basic Usage
 ```python
-from davinki import DaVinki
+from main import DaVinki
 
 generator = DaVinki(
     target_image_path='path/to/your/image.jpg',
