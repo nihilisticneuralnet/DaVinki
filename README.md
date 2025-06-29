@@ -135,14 +135,6 @@ DaVinki/
 ```
 
 
-## Research Applications
-
-This implementation demonstrates several computer vision and optimization concepts:
-- **Content-Based Image Retrieval**: Multi-dimensional similarity matching
-- **Spatial Optimization**: Constrained assignment with neighborhood awareness
-- **Feature Engineering**: Domain-specific descriptor design for visual similarity
-- **Combinatorial Optimization**: Unique assignment under multiple constraints
-
 ## Future Enhancements
 
 - [ ] Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
