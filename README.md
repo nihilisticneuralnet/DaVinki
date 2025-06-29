@@ -4,10 +4,9 @@ A  photomosaic generator that transforms target images into artistic mosaics usi
 
 ## Example Outputs
 
-![DaVini Twins Input](/img/davinki_output.png)
-
-
 ![Mona Lisa](/img/mona_output.png) 
+
+![DaVini Twins Input](/img/davinki_output.png)
 
 
 ## Key Features
