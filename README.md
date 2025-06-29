@@ -8,6 +8,13 @@ A photomosaic generator that transforms target images into artistic mosaics usin
 
 ![DaVini Twins Input](/img/davinki_output.png)
 
+## Architecture
+
+https://github.com/user-attachments/assets/2aad45f7-0669-408a-a856-cf6ab8ce478c
+
+
+https://github.com/user-attachments/assets/44412361-e036-4ff5-a7f4-58ea7c84c4c3
+
 
 ## Key Features
 
