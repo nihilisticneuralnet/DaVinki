@@ -1,6 +1,6 @@
-# DaVinki - Photomosaic Generator using CIFAR-10 Dataset
+# DaVinki: Photomosaic Generator using CIFAR-10 Dataset
 
-A  photomosaic generator that transforms target images into artistic mosaics using images from the **CIFAR-10 dataset**. The project uses feature extraction techniques, **spatial-aware** algorithm to create mosaics while ensuring each source image is used only once.
+A photomosaic generator that transforms target images into artistic mosaics using images from the **CIFAR-10 dataset**. The project uses feature extraction techniques, **spatial-aware** algorithm to create mosaics while ensuring each source image is used only once.
 
 ## Example Outputs
 
@@ -145,30 +145,24 @@ This implementation demonstrates several computer vision and optimization concep
 
 ## Future Enhancements
 
-- Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
-- Quality assessment and evaluation metrics
-- GPU acceleration support
+- [ ] Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
+- [ ] Quality assessment and evaluation metrics
+- [ ] GPU acceleration support
 
 
 ## License
 
 This project is licensed under the MIT License. See LICENSE file for details.
 
-## Acknowledgments
-
-- CIFAR-10 dataset creators and maintainers
-- OpenCV community for robust computer vision tools
-- scikit-learn team for machine learning utilities
-- Contributors to the open-source Python ecosystem
 
 ## Citation
 
 If you use this code in academic work, please cite:
 ```
 @software{davinki_photomosaic,
-  title={DaVinki: Spatial-Aware Photomosaic Generation using CIFAR-10},
-  author={[Your Name]},
+  title={DaVinki: Photomosaic Generator using CIFAR-10 Dataset},
+  author={[Parth]},
   year={2025},
-  url={https://github.com/yourusername/davinki-photomosaic}
+  url={https://github.com/nihilisticneuralnet/DaVinki}
 }
 ```
