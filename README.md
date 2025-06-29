@@ -1,14 +1,18 @@
 # DaVinki - Photomosaic Generator using CIFAR-10 Dataset
 
-A sophisticated photomosaic generator that transforms target images into artistic mosaics using images from the CIFAR-10 dataset. The system employs advanced computer vision techniques, spatial-aware algorithms, and multi-dimensional feature extraction to create visually compelling mosaics while ensuring each source image is used only once.
+A  photomosaic generator that transforms target images into artistic mosaics using images from the **CIFAR-10 dataset**. The project uses feature extraction techniques, **spatial-aware** algorithm to create mosaics while ensuring each source image is used only once.
 
-## Project Overview
+## Example Outputs
 
-DaVinki creates photomosaics by breaking down a target image into tiles and replacing each tile with the most similar image from the CIFAR-10 dataset. The algorithm uses a unique spatial-aware assignment approach that considers both feature similarity and spatial relationships between neighboring tiles to produce coherent and aesthetically pleasing results.
+![DaVini Twins Input](/img/davinki_output.png)
+
+
+![Mona Lisa](/img/mona_output.png) 
+
 
 ## Key Features
 
-### Advanced Feature Extraction
+### Feature Extraction
 - **Multi-channel Color Statistics**: RGB and HSV color space analysis with percentile-based distributions
 - **Texture Analysis**: Gradient-based texture features using Sobel operators
 - **Frequency Domain Features**: FFT-based low and high frequency component analysis
@@ -22,11 +26,9 @@ DaVinki creates photomosaics by breaking down a target image into tiles and repl
 - **Neighbor-Aware Matching**: Considers similarity relationships with adjacent tiles
 - **Dynamic Distance Modification**: Balances feature similarity with spatial constraints
 
-### Robust Dataset Handling
-- **Automatic CIFAR-10 Loading**: Fetches dataset via OpenML with balanced class sampling
-- **Fallback Mechanisms**: Synthetic image generation if dataset loading fails
-- **Scalable Sample Size**: Adaptive sampling based on grid requirements
-- **Memory Efficient**: Processes large datasets without memory overflow
+### Dataset Handling
+- **Automatic CIFAR-10 Loading**: Fetches dataset with balanced class (stratified) sampling
+
 
 ## Technical Specifications
 
@@ -56,8 +58,8 @@ DaVinki creates photomosaics by breaking down a target image into tiles and repl
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/davinki-photomosaic.git
-cd davinki-photomosaic
+git clone https://github.com/nihilisticneuralnet/DaVinki.git
+cd DaVinki
 
 # Install dependencies
 pip install -r requirements.txt
@@ -72,14 +74,12 @@ python main.py
 ```python
 from davinki import DaVinki
 
-# Initialize generator
 generator = DaVinki(
     target_image_path='path/to/your/image.jpg',
     tile_size=32,
     grid_size=(64, 64)
 )
 
-# Generate mosaic
 generator.load_cifar_dataset(num_samples=10000)
 generator.load_target_image()
 generator.extract_tiles()
@@ -92,23 +92,6 @@ results = generator.run_unique_spatial_mosaic()
 - **grid_size**: Mosaic dimensions in tiles (e.g., (32, 32) for 32x32 grid)
 - **num_samples**: Number of CIFAR-10 images to load (minimum: grid_size[0] × grid_size[1])
 
-## Example Outputs
-
-### Example 1: Portrait Mosaic
-**Input**: High-contrast portrait photograph
-**Configuration**: 64x64 grid, 32px tiles, 10,000 CIFAR samples
-**Result**: Detailed facial features preserved through strategic tile placement
-**Uniqueness Ratio**: 98.5% (4,063/4,096 unique images)
-
-![Portrait Input](examples/portrait_input.png) ![Portrait Mosaic](examples/portrait_output.png)
-
-### Example 2: Landscape Mosaic
-**Input**: Sunset landscape with gradient sky
-**Configuration**: 48x48 grid, 24px tiles, 8,000 CIFAR samples
-**Result**: Smooth color transitions maintained via spatial-aware algorithm
-**Uniqueness Ratio**: 97.2% (2,236/2,304 unique images)
-
-![Landscape Input](examples/landscape_input.png) ![Landscape Mosaic](examples/landscape_output.png)
 
 ## Algorithm Details
 
@@ -136,40 +119,22 @@ results = generator.run_unique_spatial_mosaic()
 ## File Structure
 
 ```
-davinki-photomosaic/
-├── main.py                 # Main execution script
-├── davinki.py              # Core DaVinki class implementation
-├── config.py               # Configuration management
-├── dataset_loader.py       # CIFAR-10 dataset utilities
-├── image_utils.py          # Image processing functions
-├── feature_extraction.py   # Advanced feature computation
-├── spatial_aware_algo.py   # Spatial assignment algorithm
-├── mosaic_generator.py     # Mosaic assembly functions
-├── visualization.py        # Result display utilities
-├── utils.py               # General utility functions
+DaVinki/
+├── src/main.py                 # Main execution script
+├── src/config.py               # Configuration management
+├── src/dataset_loader.py       # CIFAR-10 dataset utilities
+├── src/image_utils.py          # Image processing functions
+├── src/feature_extraction.py   # Advanced feature computation
+├── src/spatial_aware_algo.py   # Spatial assignment algorithm
+├── src/mosaic_generator.py     # Mosaic assembly functions
+├── src/visualization.py        # Result display utilities
+├── src/utils.py               # General utility functions
 ├── requirements.txt       # Python dependencies
-├── example.ipynb          # Jupyter notebook demonstration
-├── examples/              # Sample inputs and outputs
+├── davinki.ipynb          # Jupyter notebook demonstration
+├── img/              # Sample inputs and outputs
 └── README.md              # This file
 ```
 
-## Performance Considerations
-
-### Memory Usage
-- **Feature Storage**: ~180KB per 1,000 images (45 features × 4 bytes × 1,000)
-- **Image Storage**: ~3MB per 1,000 CIFAR images (32×32×3 × 1,000)
-- **Peak Memory**: Approximately 50-100MB for typical configurations
-
-### Processing Time
-- **Feature Extraction**: ~0.1 seconds per image on modern hardware
-- **Assignment Algorithm**: O(n²) complexity, ~5-10 minutes for 64×64 grids
-- **Mosaic Assembly**: Linear time, typically under 1 minute
-
-### Optimization Strategies
-- **Batch Processing**: Feature extraction in vectorized batches
-- **Early Termination**: Distance threshold for assignment acceleration
-- **Memory Mapping**: Large dataset handling via lazy loading
-- **Parallel Processing**: Multi-threaded feature computation (future enhancement)
 
 ## Research Applications
 
@@ -181,68 +146,10 @@ This implementation demonstrates several computer vision and optimization concep
 
 ## Future Enhancements
 
-### Algorithm Improvements
-- [ ] **Deep Learning Features**: Integration of pre-trained CNN features (ResNet, VGG) for better semantic similarity
-- [ ] **Hungarian Algorithm**: Optimal assignment solution for global cost minimization
-- [ ] **Genetic Algorithm**: Evolutionary optimization for multi-objective mosaic generation
-- [ ] **Adaptive Tile Sizing**: Variable tile sizes based on image content complexity
-- [ ] **Multi-scale Processing**: Hierarchical matching from coarse to fine detail levels
-
-### Performance Optimizations
-- [ ] **GPU Acceleration**: CUDA implementation for parallel feature extraction and distance computation
-- [ ] **Memory Optimization**: Streaming processing for large datasets and high-resolution outputs
-- [ ] **Caching System**: Feature database persistence for repeated dataset usage
-- [ ] **Parallel Processing**: Multi-threaded assignment algorithm with work stealing
-- [ ] **Progressive Rendering**: Real-time preview updates during processing
-
-### User Experience
-- [ ] **Interactive GUI**: Desktop application with drag-and-drop functionality
-- [ ] **Web Interface**: Browser-based mosaic generator with real-time preview
-- [ ] **Parameter Tuning**: Automatic hyperparameter optimization using grid search
-- [ ] **Batch Processing**: Multiple image processing with queue management
-- [ ] **Progress Visualization**: Real-time algorithm progress and quality metrics
-
-### Dataset Extensions
-- [ ] **Custom Datasets**: Support for user-provided image collections
-- [ ] **ImageNet Integration**: Large-scale natural image database support
-- [ ] **Video Frame Extraction**: Automatic keyframe selection from video files
-- [ ] **Art Database**: Integration with museum and artwork databases
-- [ ] **Style-Specific Collections**: Curated datasets for specific artistic styles
-
-### Advanced Features
-- [ ] **Color Palette Matching**: Dominant color extraction and palette-based assignment
-- [ ] **Semantic Segmentation**: Object-aware tile assignment for better content preservation
-- [ ] **Style Transfer Integration**: Neural style transfer post-processing
-- [ ] **Multi-resolution Output**: Generate mosaics at multiple scales simultaneously
-- [ ] **Animation Support**: Temporal coherence for video mosaic generation
-
-### Quality Improvements
-- [ ] **Perceptual Loss Functions**: LPIPS and other perceptual similarity metrics
-- [ ] **Edge-Aware Processing**: Enhanced boundary preservation techniques
-- [ ] **Adaptive Blending**: Seamless tile boundary integration
-- [ ] **Quality Assessment**: Automated mosaic quality scoring
-- [ ] **A/B Testing Framework**: Systematic algorithm comparison tools
-
-## Contributing
-
-Contributions are welcome! Priority areas for development:
-- Advanced feature descriptors and similarity metrics
-- Performance optimization and GPU acceleration
-- User interface and experience improvements
-- Alternative optimization algorithms
+- Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
 - Quality assessment and evaluation metrics
-
-Please see the Future Enhancements section above for specific implementation opportunities.
-
-
-## Contributing
-
-Contributions are welcome! Areas for improvement include:
-- Advanced feature descriptors (HOG, SIFT, deep learning features)
-- Alternative optimization algorithms (Hungarian algorithm, genetic algorithms)
-- Real-time processing optimizations
 - GPU acceleration support
-- Interactive parameter tuning interface
+
 
 ## License
 
