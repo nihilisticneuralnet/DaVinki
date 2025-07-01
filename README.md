@@ -144,7 +144,6 @@ DaVinki/
 ## Future Enhancements
 
 - [ ] Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
-- [ ] Quality assessment and evaluation metrics
 - [ ] GPU acceleration support
 
 
