@@ -89,29 +89,6 @@ results = generator.run_unique_spatial_mosaic()
 - **num_samples**: Number of CIFAR-10 images to load (minimum: grid_size[0] × grid_size[1])
 
 
-## Algorithm Details
-
-### Feature Extraction Pipeline
-1. **Color Space Transformation**: RGB → HSV conversion for perceptual color analysis
-2. **Statistical Moments**: Mean, standard deviation, median, and quartiles per channel
-3. **Gradient Analysis**: Sobel operator application for texture characterization
-4. **Frequency Analysis**: 2D FFT for spatial frequency decomposition
-5. **Edge Density**: Canny edge detection with contour counting
-6. **Local Patterns**: Uniform Local Binary Pattern computation
-
-### Spatial-Aware Assignment Process
-1. **Spiral Ordering**: Generate center-out processing sequence
-2. **Neighbor Context**: Identify adjacent tiles and their assignments
-3. **Distance Modification**: Apply spatial coherence penalties
-4. **Greedy Selection**: Choose optimal available image per tile
-5. **Uniqueness Enforcement**: Track used images to prevent repetition
-
-### Quality Metrics
-- **Visual Coherence**: Measured through neighbor similarity analysis
-- **Color Fidelity**: MSE between original and mosaic RGB values
-- **Feature Preservation**: Distance minimization in high-dimensional space
-- **Coverage Efficiency**: Ratio of unique images utilized
-
 ## File Structure
 
 ```
