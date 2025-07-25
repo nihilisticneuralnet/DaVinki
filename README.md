@@ -8,12 +8,11 @@ A photomosaic generator that transforms target images into artistic mosaics usin
 
 ![DaVini Twins Input](/img/davinki_output.png)
 
-## Architecture
 
-https://github.com/user-attachments/assets/2aad45f7-0669-408a-a856-cf6ab8ce478c
+<!--https://github.com/user-attachments/assets/2aad45f7-0669-408a-a856-cf6ab8ce478c-->
 
 
-https://github.com/user-attachments/assets/44412361-e036-4ff5-a7f4-58ea7c84c4c3
+<!--https://github.com/user-attachments/assets/44412361-e036-4ff5-a7f4-58ea7c84c4c3-->
 
 
 ## Key Features
@@ -52,14 +51,6 @@ https://github.com/user-attachments/assets/44412361-e036-4ff5-a7f4-58ea7c84c4c3
 
 ## Installation
 
-### Prerequisites
-- Python 3.7+
-- OpenCV 4.0+
-- NumPy, SciPy
-- scikit-learn
-- scikit-image
-- matplotlib
-- tqdm
 
 ### Setup
 ```bash
@@ -146,20 +137,3 @@ DaVinki/
 - [ ] Advanced feature descriptors (HOG, SIFT, deep learning features) and similarity metrics
 - [ ] GPU acceleration support
 
-
-## License
-
-This project is licensed under the MIT License. See LICENSE file for details.
-
-
-## Citation
-
-If you use this code in academic work, please cite:
-```
-@software{davinki_photomosaic,
-  title={DaVinki: Photomosaic Generator using CIFAR-10 Dataset},
-  author={[Parth]},
-  year={2025},
-  url={https://github.com/nihilisticneuralnet/DaVinki}
-}
-```
