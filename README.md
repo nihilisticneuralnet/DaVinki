@@ -27,7 +27,6 @@ A photomosaic generator that transforms target images into artistic mosaics usin
 
 ### Spatial-Aware Assignment Algorithm
 - **Unique Image Constraint**: Each CIFAR-10 image used exactly once across the entire mosaic
-- **Spiral Processing**: Center-out tile processing for optimal spatial coherence
 - **Neighbor-Aware Matching**: Considers similarity relationships with adjacent tiles
 - **Dynamic Distance Modification**: Balances feature similarity with spatial constraints
 
